@@ -1,8 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/core/widgets/app_input_widgets.dart';
+import '../../../../app/route/app_routes.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/widgets/app_snackbar.dart';
@@ -58,6 +58,12 @@ class _LoginPageState extends State<LoginPage> {
                       context,
                       message: "Login Successful",
                     );
+//Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  DashboardPage()));
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.dashboardPage,
+              (route) => false,
+            );
                   } else if (state is AuthError) {
                     AppBottomSheets.hide(context);
                     AppBottomSheets.showError(context, message: state.message);

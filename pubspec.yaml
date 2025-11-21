@@ -37,6 +37,7 @@ dependencies:
   bloc: ^9.1.0
   flutter_secure_storage: ^9.2.4
   flutter_bloc: ^9.1.1
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

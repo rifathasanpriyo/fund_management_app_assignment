@@ -1,28 +1,9 @@
 class AppRoutes {
 
   static const splashPage = '/SplashPage';
-
-  static const String roleSelectionPage = 'RoleSelectionPage';
-
-  //!for teachers
-  static const String teacherRootPage = 'TeacherRootPage';
-  static const String teacherLoginPage = 'TeacherLoginPage';
-  static const String teacherDashboardPage = 'TeacherDashboardPage';
-  static const String attendanceTeacherPage = 'AttendanceTeacherPage';
-  static const String newAttendanceCreatePage = 'NewAttendanceCreatePage';
-  static const String teacherProfilePage = 'TeacherProfilePage';
-  static const String teacherProfileUpdatePage = 'TeacherProfileUpdatePage';
-  static const String teacherChangePasswordPage =
-      'TeacherChangePasswordPage';
-
-
-  //!for student
-    static const String studentRootPage = 'StudentRootPage';
-    static const String studentLoginPage = 'StudentLoginPage';
-    static const String studentProfileUpdate = 'studentProfileUpdate';
-    static const String studentCurrentSemester = 'studentCurrentSemester';
-    static const String studentChangePasswordPage =
-      'StudentChangePasswordPage';
-
+ 
+   static const loginPage = '/LoginPage';
+ 
+  static const String dashboardPage = 'DashboardPage';
 
 }

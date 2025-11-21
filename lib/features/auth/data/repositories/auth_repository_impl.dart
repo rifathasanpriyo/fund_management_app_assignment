@@ -25,9 +25,4 @@ class AuthRepositoryImpl implements AuthRepository {
     final token = await session.getToken();
     return token != null;
   }
-
-  @override
-  Future<void> logout() async {
-    await session.clearSession();
-  }
 }

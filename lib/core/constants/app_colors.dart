@@ -12,13 +12,11 @@ class AppColors {
   static const textBlack1 = Colors.black87;
   // static const textBlack2 = Colors.black54;
   static Color fill = Colors.grey.shade100;
-  static const Color subtitle = Colors.grey;
+  static const Color subtitle = Color.fromARGB(255, 123, 123, 123);
   // static const Color active = Colors.greenAccent;
   static const Color blue = Color(0xff7dbcff);
   static const Color green = Color.fromARGB(255, 0, 154, 80);
   static const Color red = Colors.redAccent;
   static const Color orange = Colors.orange;
   // static Color? blueShade = Colors.blue[100];
-
-  
 }
