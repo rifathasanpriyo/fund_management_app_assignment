@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/constants/app_icons.dart';
 import 'package:flutter_application_1/core/constants/app_sizes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../bloc/dashboard_bloc.dart';

@@ -4,7 +4,6 @@ import 'package:flutter_application_1/app/route/app_routes.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_icons.dart';
-import '../../../fund/presentations/pages/fund_details_page.dart';
 
 class ManuOptionWidget extends StatelessWidget {
   const ManuOptionWidget({super.key});
@@ -14,26 +13,31 @@ class ManuOptionWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: Offset(0, 3),
-                  ),
-                ],
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.depositFundPage);
+          },
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Icon(AppIcons.arrowUp, color: AppColors.blue, size: 30),
               ),
-              child: Icon(AppIcons.arrowUp, color: AppColors.blue, size: 30),
-            ),
-            SizedBox(height: 8),
-            Text("Deposit", style: TextStyle(fontWeight: FontWeight.w500)),
-          ],
+              SizedBox(height: 8),
+              Text("Deposit", style: TextStyle(fontWeight: FontWeight.w500)),
+            ],
+          ),
         ),
 
         Column(

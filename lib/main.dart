@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/route/app_router.dart';
 import 'package:flutter_application_1/features/dashboard/data/data_sourecs/fake_dashboard_data_source.dart';
 import 'package:flutter_application_1/features/dashboard/domain/usecases/get_dashboard_data_use_cases.dart';
+import 'package:flutter_application_1/features/deposit_fund/data/repository/deposit_repository_impl.dart';
+import 'package:flutter_application_1/features/deposit_fund/domain/usecases/deposit_usecase.dart';
+import 'package:flutter_application_1/features/deposit_fund/presentations/bloc/deposit_bloc.dart';
 import 'package:flutter_application_1/features/fund/data/data_sources/fake_fund_data_source.dart';
 import 'package:flutter_application_1/features/fund/data/repositories/fund_repository_impl.dart';
 import 'package:flutter_application_1/features/fund/domain/usecases/get_fund_details.dart';
@@ -16,6 +19,7 @@ import 'app/route/app_routes.dart';
 import 'features/auth/data/data_sources/fake_auth_data_source.dart';
 import 'features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import 'features/dashboard/presentations/bloc/dashboard_bloc.dart';
+import 'features/deposit_fund/data/data_sources/fake_deposit_data_source.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,6 +70,16 @@ class MyApp extends StatelessWidget {
       ),
     ),
 
+             BlocProvider(
+      create: (_) => DepositBloc(
+        DepositUseCase(
+          DepositRepositoryImpl(
+            FakeDepositDataSource(),
+          ),
+        ),
+      ),
+    ),
+
         // Add more Blocs here if needed
       ],
       child: MaterialApp(
@@ -74,7 +88,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        initialRoute: AppRoutes.loginPage,
+        initialRoute: AppRoutes.splashPage,
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );
