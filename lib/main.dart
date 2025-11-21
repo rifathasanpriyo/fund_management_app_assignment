@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/route/app_router.dart';
 import 'package:flutter_application_1/features/dashboard/data/data_sourecs/fake_dashboard_data_source.dart';
 import 'package:flutter_application_1/features/dashboard/domain/usecases/get_dashboard_data_use_cases.dart';
+import 'package:flutter_application_1/features/fund/data/data_sources/fake_fund_data_source.dart';
+import 'package:flutter_application_1/features/fund/data/repositories/fund_repository_impl.dart';
+import 'package:flutter_application_1/features/fund/domain/usecases/get_fund_details.dart';
+import 'package:flutter_application_1/features/fund/presentations/bloc/fund_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/core/local_database/auth_db.dart';
 import 'package:flutter_application_1/features/auth/presentation/bloc/auth_bloc.dart';
@@ -11,7 +15,7 @@ import 'package:flutter_application_1/features/auth/domain/usecases/check_login_
 import 'app/route/app_routes.dart';
 import 'features/auth/data/data_sources/fake_auth_data_source.dart';
 import 'features/dashboard/data/repositories/dashboard_repository_impl.dart';
-import 'features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'features/dashboard/presentations/bloc/dashboard_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,6 +55,16 @@ class MyApp extends StatelessWidget {
             GetDashboardDataUseCase(AppDependencies.dashboardRepository),
           ),
         ),
+
+        BlocProvider(
+      create: (_) => FundBloc(
+        GetFundDetailsUseCase(
+          FundRepositoryImpl(
+            FakeFundDataSource(),
+          ),
+        ),
+      ),
+    ),
 
         // Add more Blocs here if needed
       ],

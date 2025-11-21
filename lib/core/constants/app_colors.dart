@@ -12,7 +12,8 @@ class AppColors {
   static const textBlack1 = Colors.black87;
   // static const textBlack2 = Colors.black54;
   static Color fill = Colors.grey.shade100;
-  static const Color subtitle = Color.fromARGB(255, 123, 123, 123);
+  static const Color subtitle = Color.fromARGB(255, 141, 141, 141);
+  static  Color subtitle2 = Colors.white.withAlpha(200);
   // static const Color active = Colors.greenAccent;
   static const Color blue = Color(0xff7dbcff);
   static const Color green = Color.fromARGB(255, 0, 154, 80);

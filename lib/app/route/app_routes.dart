@@ -6,4 +6,6 @@ class AppRoutes {
  
   static const String dashboardPage = 'DashboardPage';
 
+  static const String fundDetailsPage = 'FundDetailsPage';
+
 }
