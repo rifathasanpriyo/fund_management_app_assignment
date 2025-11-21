@@ -1,7 +1,7 @@
 class DashboardEntity {
-  final double currentBalance;
-  final double availableBalance;
-  final List<TransactionEntity> transactions;
+   double currentBalance;
+   double availableBalance;
+   List<TransactionEntity> transactions;
 
   DashboardEntity({
     required this.currentBalance,

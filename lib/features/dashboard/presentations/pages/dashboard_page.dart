@@ -51,7 +51,9 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                       SizedBox(height: AppSizes.bodyPadding),
 
-                      ManuOptionWidget(),
+                      ManuOptionWidget(
+                       data: data,
+                      ),
                       
                       SizedBox(height: AppSizes.bodyPadding * 2),
 

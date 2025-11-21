@@ -9,6 +9,9 @@ import 'package:flutter_application_1/features/fund/data/data_sources/fake_fund_
 import 'package:flutter_application_1/features/fund/data/repositories/fund_repository_impl.dart';
 import 'package:flutter_application_1/features/fund/domain/usecases/get_fund_details.dart';
 import 'package:flutter_application_1/features/fund/presentations/bloc/fund_bloc.dart';
+import 'package:flutter_application_1/features/withdraw_fund/data/data_sources/fake_withdraw_data_source.dart';
+import 'package:flutter_application_1/features/withdraw_fund/domain/usecases/withdraw_usecase.dart';
+import 'package:flutter_application_1/features/withdraw_fund/presentation/bloc/withdraw_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/core/local_database/auth_db.dart';
 import 'package:flutter_application_1/features/auth/presentation/bloc/auth_bloc.dart';
@@ -20,6 +23,7 @@ import 'features/auth/data/data_sources/fake_auth_data_source.dart';
 import 'features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import 'features/dashboard/presentations/bloc/dashboard_bloc.dart';
 import 'features/deposit_fund/data/data_sources/fake_deposit_data_source.dart';
+import 'features/withdraw_fund/data/repositories/withdraw_repository_impl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -75,6 +79,16 @@ class MyApp extends StatelessWidget {
         DepositUseCase(
           DepositRepositoryImpl(
             FakeDepositDataSource(),
+          ),
+        ),
+      ),
+    ),
+
+      BlocProvider(
+      create: (_) => WithdrawBloc(
+        WithdrawUseCase(
+          WithdrawRepositoryImpl(
+            FakeWithdrawDataSource(),
           ),
         ),
       ),

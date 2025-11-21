@@ -8,5 +8,6 @@ class AppRoutes {
 
   static const String fundDetailsPage = 'FundDetailsPage';
   static const String depositFundPage = 'DepositFundPage';
+  static const String withdrawFundPage = 'WithdrawFundPage';
 
 }
