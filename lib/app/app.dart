@@ -1,51 +1,64 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// import 'route/app_router.dart';
-// import 'route/app_routes.dart';
-// import 'theme/light_theme.dart';
+import '../features/auth/presentation/bloc/auth_bloc.dart';
+import '../features/dashboard/presentations/bloc/dashboard_bloc.dart';
+import '../features/fund/presentations/bloc/fund_bloc.dart';
+import '../features/deposit_fund/presentations/bloc/deposit_bloc.dart';
+import '../features/withdraw_fund/presentation/bloc/withdraw_bloc.dart';
+import '../features/transaction_history/presentation/bloc/transaction_bloc.dart';
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiBlocProvider(
-//       providers: [
-//         BlocProvider<SplashBloc>(create: (context) => SplashBloc()),
-//         //!-------for teacher--------
-//         BlocProvider<TeacherAuthBloc>(create: (context) => TeacherAuthBloc()),
-//         BlocProvider<TeacherProfileBloc>(
-//           create: (context) => TeacherProfileBloc(),
-//         ),
-//         BlocProvider<TeacherAttendanceBloc>(
-//           create: (context) => TeacherAttendanceBloc(),
-//         ),
-//         BlocProvider<SubjectBloc>(create: (context) => SubjectBloc()),
-//         BlocProvider<BranchBloc>(create: (context) => BranchBloc()),
-//         BlocProvider<ChangePasswordTeacherBloc>(
-//           create: (context) => ChangePasswordTeacherBloc(),
-//         ),
+import 'route/app_router.dart';
+import 'route/app_routes.dart';
+import 'di/app_dependencies.dart';
 
-//         //!-------for student--------
-//         BlocProvider<StudentAuthBloc>(create: (context) => StudentAuthBloc()),
-//         BlocProvider<StudentProfileBloc>(
-//           create: (context) => StudentProfileBloc(),
-//         ),
-//         BlocProvider<ChangePasswordStudentBloc>(
-//           create: (context) => ChangePasswordStudentBloc(),
-//         ),
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-
-//         BlocProvider<AttendanceBloc>(create: (context) => AttendanceBloc()),
-//       ],
-//       child: MaterialApp(
-//         debugShowCheckedModeBanner: false,
-//         title: 'Polytech',
-//         theme: lightTheme,
-//         //  initialRoute: AppRoutes.splashPage,
-//         initialRoute: AppRoutes.splashPage,
-//         onGenerateRoute: AppRouter.generateRoute,
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => AuthBloc(
+            loginUseCase: AppDependencies.loginUseCase,
+          ),
+        ),
+        BlocProvider(
+          create: (_) => DashboardBloc(
+            AppDependencies.getDashboardDataUseCase,
+          ),
+        ),
+        BlocProvider(
+          create: (_) => FundBloc(
+            AppDependencies.getFundDetailsUseCase,
+          ),
+        ),
+        BlocProvider(
+          create: (_) => DepositBloc(
+            AppDependencies.depositUseCase,
+          ),
+        ),
+        BlocProvider(
+          create: (_) => WithdrawBloc(
+            AppDependencies.withdrawUseCase,
+          ),
+        ),
+        BlocProvider(
+          create: (_) => TransactionBloc(
+            AppDependencies.getTransactionsUseCase,
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Fund Management",
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        initialRoute: AppRoutes.splashPage,
+        onGenerateRoute: AppRouter.generateRoute,
+      ),
+    );
+  }
+}
