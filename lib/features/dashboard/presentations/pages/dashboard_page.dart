@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constants/app_sizes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../app/route/app_routes.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../bloc/dashboard_bloc.dart';
 import '../widgets/balance_card_widget.dart';
 import '../widgets/manu_option_widget.dart';
+import '../widgets/profile_app_bar_widget.dart';
 import '../widgets/recent_transations_list_card_widgets.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -23,10 +25,10 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Dashboard", style: TextStyle(color: AppColors.white)),
-        backgroundColor: AppColors.primary,
-      ),
+      // appBar: AppBar(
+      //   title: Text("Dashboard", style: TextStyle(color: AppColors.white)),
+      //   backgroundColor: AppColors.primary,
+      // ),
       body: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           if (state is DashboardLoading) {
@@ -45,16 +47,16 @@ class _DashboardPageState extends State<DashboardPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Balance Cards
+                      ProfileAppBarWidget(),
+                      SizedBox(height: AppSizes.bodyPadding),
                       BalanceCardWidget(
                         currentBalance: currentBalance,
                         availableBalance: availableBalance,
                       ),
                       SizedBox(height: AppSizes.bodyPadding),
 
-                      ManuOptionWidget(
-                       data: data,
-                      ),
-                      
+                      ManuOptionWidget(data: data),
+
                       SizedBox(height: AppSizes.bodyPadding * 2),
 
                       Row(
@@ -67,11 +69,19 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                           ),
                           Spacer(),
-                          Text(
-                            "See all",
-                            style: TextStyle(
-                              color: AppColors.blue,
-                              fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppRoutes.transactionHistoryPage,
+                              );
+                            },
+                            child: Text(
+                              "See all",
+                              style: TextStyle(
+                                color: AppColors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],

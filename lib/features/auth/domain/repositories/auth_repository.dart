@@ -1,5 +1,6 @@
-abstract class AuthRepository {
-  Future<bool> login(String email, String password);
+import 'package:dartz/dartz.dart';
+import '../../../../core/errors/failures.dart';
 
-  Future<bool> isLoggedIn(); // check session
+abstract class AuthRepository {
+  Future<Either<Failure, bool>> login(String email, String password);
 }

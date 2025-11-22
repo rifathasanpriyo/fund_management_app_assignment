@@ -6,6 +6,7 @@ import '../../features/dashboard/presentations/pages/dashboard_page.dart';
 import '../../features/deposit_fund/presentations/pages/deposit_fund_page.dart';
 import '../../features/fund/presentations/pages/fund_details_page.dart';
 import '../../features/splash/presentations/pages/splash_page.dart';
+import '../../features/transaction_history/presentation/pages/transaction_history_page.dart';
 import '../../features/withdraw_fund/presentation/pages/withdraw_fund_page.dart';
 import 'app_routes.dart';
 
@@ -38,7 +39,10 @@ class AppRouter {
                 ? (settings.arguments as Map)['availableBalance'] as double
                 : 0.0,
           ),
+          
         );
+        case AppRoutes.transactionHistoryPage:
+        return CupertinoPageRoute(builder: (_) => const TransactionHistoryPage());
       default:
         return CupertinoPageRoute(builder: (_) => const Placeholder());
     }

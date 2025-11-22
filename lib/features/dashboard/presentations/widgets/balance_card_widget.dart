@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/route/app_routes.dart';
 import 'package:flutter_application_1/core/constants/app_colors.dart';
 
 class BalanceCardWidget extends StatefulWidget {
@@ -127,15 +128,20 @@ class _BalanceCardWidgetState extends State<BalanceCardWidget> {
                 },
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.fundDetailsPage);
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF007BFF),
+                  backgroundColor: AppColors.primary,
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Text("Add Money", style: TextStyle(color: Colors.white)),
+                child: Text(
+                  "View Details",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

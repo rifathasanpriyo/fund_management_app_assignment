@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/constants/app_colors.dart';
 
 import '../../../../app/route/app_routes.dart';
 import '../../../../core/local_database/auth_db.dart';
@@ -23,28 +24,28 @@ class _SplashPageState extends State<SplashPage> {
     final token = await _session.getToken();
 
     if (token != null && token.isNotEmpty) {
-      //  Token available 
-   Navigator.pushNamedAndRemoveUntil(
-              context,
-              AppRoutes.dashboardPage,
-              (route) => false,
-            );
+      //  Token available
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoutes.dashboardPage,
+        (route) => false,
+      );
     } else {
-      //  Token not available 
-   Navigator.pushNamedAndRemoveUntil(
-              context,
-              AppRoutes.loginPage,
-              (route) => false,
-            );
+      //  Token not available
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoutes.loginPage,
+        (route) => false,
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Image.asset('assets/fund_logo.png', width: 280, height: 280),
       ),
     );
   }

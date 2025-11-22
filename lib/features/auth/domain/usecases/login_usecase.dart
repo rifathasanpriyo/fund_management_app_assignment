@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import '../../../../core/errors/failures.dart';
 import '../repositories/auth_repository.dart';
 
 class LoginUseCase {
@@ -5,7 +7,7 @@ class LoginUseCase {
 
   LoginUseCase(this.repository);
 
-  Future<bool> call(String email, String password) {
-    return repository.login(email, password);
+  Future<Either<Failure, bool>> call(String email, String password) async {
+    return await repository.login(email, password);
   }
 }
